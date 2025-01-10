@@ -9,21 +9,14 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "dest": "server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/server.js"
+      "dest": "server.js"
     }
   ],
   "env": {
-    "NODE_ENV": "production",
-    "MY_SECRET_KEY": "@my-secret-key"
-  },
-  "functions": {
-    "server.js": {
-      "maxDuration": 10,
-      "memory": 512
-    }
+    "NODE_ENV": "production"
   }
 }
