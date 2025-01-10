@@ -1,6 +1,12 @@
 "use client";
-import { useRouter } from "next/navigation";
+
+import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+const NoSsrComponent = dynamic(() => import('../components/NoSsrComponent'), {
+  ssr: false,
+});
 
 export default function Home() {
 
@@ -18,6 +24,10 @@ export default function Home() {
   }, [router]);
 
   return (
-    <> </>
+    <>
+      <NoSsrComponent>
+        <h1></h1>
+      </NoSsrComponent>
+    </>
   );
 }
