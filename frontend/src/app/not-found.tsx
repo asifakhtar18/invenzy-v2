@@ -1,59 +1,28 @@
-'use client'
-
-import { useEffect } from 'react'
-import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { Button } from "@/components/ui/button"
-import { useRouter } from 'next/navigation'
+import dynamic from 'next/dynamic'
+
+const NotFoundAnimation = dynamic(
+    () => import('../components/NotFoundAnimation').then(mod => mod.NotFoundAnimation),
+    { ssr: false }
+)
 
 export default function NotFound() {
-    const router = useRouter()
-
-    const containerVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.5,
-                staggerChildren: 0.1
-            }
-        }
-    }
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-    }
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
-            <motion.div
-                className="text-center"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-            >
-                <motion.h1
-                    className="text-6xl font-bold text-gray-900 mb-4"
-                    variants={itemVariants}
-                >
+            <NotFoundAnimation>
+                <h1 className="text-6xl font-bold text-gray-900 mb-4">
                     404
-                </motion.h1>
-                <motion.p
-                    className="text-xl text-gray-600 mb-8"
-                    variants={itemVariants}
-                >
+                </h1>
+                <p className="text-xl text-gray-600 mb-8">
                     Page not found
-                </motion.p>
-                <motion.div variants={itemVariants}>
-                    <Button
-                        onClick={() => router.push('/')}
-                        className="px-6 py-3"
-                    >
+                </p>
+                <Button asChild>
+                    <Link href="/">
                         Go Home
-                    </Button>
-                </motion.div>
-            </motion.div>
+                    </Link>
+                </Button>
+            </NotFoundAnimation>
         </div>
     )
 }
