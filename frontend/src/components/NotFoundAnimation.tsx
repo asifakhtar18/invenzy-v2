@@ -14,7 +14,7 @@ export function NotFoundAnimation({ children }: NotFoundAnimationProps) {
         setIsClient(true);
     }, []);
 
-    if (!isClient) return;
+    if (!isClient) return null;
 
     const containerVariants = {
         hidden: { opacity: 0, y: 20 },
