@@ -1,12 +1,21 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 interface NotFoundAnimationProps {
     children: React.ReactNode
 }
 
 export function NotFoundAnimation({ children }: NotFoundAnimationProps) {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) return;
+
     const containerVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
