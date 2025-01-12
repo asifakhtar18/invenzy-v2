@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Loader } from '@/components/loaders/Loader'
 
 const NotFoundAnimation = dynamic(
-    () => import('../src/components/NotFoundAnimation').then(mod => mod.NotFoundAnimation),
+    () => import('../components/NotFoundAnimation').then(mod => mod.NotFoundAnimation),
     { ssr: false }
 )
 

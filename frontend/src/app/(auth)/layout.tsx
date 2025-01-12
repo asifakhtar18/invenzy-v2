@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 
 import dynamic from 'next/dynamic';
 
-const NoSsrComponent = dynamic(() => import('../../src/components/NoSsrComponent'), {
+const NoSsrComponent = dynamic(() => import('../../components/NoSsrComponent'), {
     ssr: false,
 });
 

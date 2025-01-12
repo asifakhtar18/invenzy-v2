@@ -16,6 +16,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { MenuIcon } from 'lucide-react';
 
 import dynamic from 'next/dynamic';
+import { use, useEffect, useState } from 'react';
 
 const NoSsrComponent = dynamic(() => import('../../components/NoSsrComponent'), {
     ssr: false,
@@ -25,13 +26,15 @@ const NoSsrComponent = dynamic(() => import('../../components/NoSsrComponent'), 
 export function Navbar() {
     const router = useRouter();
     const pathname = usePathname();
-
+    const [token, setToken] = useState("");
     const isMobile = useMediaQuery("(max-width: 768px)");
 
-    let token;
-    if (typeof window !== 'undefined') {
-        token = localStorage.getItem('token');
-    }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setToken(token as string);
+    }, []);
+
 
     const handleLogout = () => {
         localStorage.removeItem('token');
