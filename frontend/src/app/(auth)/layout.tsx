@@ -13,9 +13,11 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     const router = useRouter()
 
     useEffect(() => {
-        if (typeof window !== 'undefined' && localStorage.getItem('token')) {
+        const token = localStorage.getItem('token')
+        if (token) {
             router.push('/inventories')
         }
+
     }, [router])
 
     return (

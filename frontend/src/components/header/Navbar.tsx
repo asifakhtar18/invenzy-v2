@@ -1,22 +1,21 @@
 'use client';
 
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Button } from "@/components/ui/button";
 import {
     Menubar,
     MenubarContent,
     MenubarItem,
     MenubarMenu,
     MenubarSeparator,
-    MenubarShortcut,
     MenubarTrigger,
 } from "@/components/ui/menubar"
+import { Button } from "@/components/ui/button";
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { MenuIcon } from 'lucide-react';
 
-import dynamic from 'next/dynamic';
-import { use, useEffect, useState } from 'react';
 
 const NoSsrComponent = dynamic(() => import('../../components/NoSsrComponent'), {
     ssr: false,

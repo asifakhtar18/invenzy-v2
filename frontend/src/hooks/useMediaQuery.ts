@@ -3,10 +3,17 @@
 import { useState, useEffect } from "react";
 
 export function useMediaQuery(query: string): boolean {
+  const [isClient, setIsClient] = useState(false);
   const [matches, setMatches] = useState(false);
 
   useEffect(() => {
-    const mediaQueryList = window.matchMedia(query);
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return false;
+
+  useEffect(() => {
+    const mediaQueryList = window?.matchMedia(query);
     setMatches(mediaQueryList.matches);
 
     const listener = (event: MediaQueryListEvent) => setMatches(event.matches);
