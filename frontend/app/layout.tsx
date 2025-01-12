@@ -6,7 +6,7 @@ import { Providers } from "./provider";
 import { Suspense } from "react";
 import { Loader } from "@/components/loaders/Loader";
 import { Navbar } from "@/components/header/Navbar";
-import { Sidebar } from "@/components/sidebar/Sidebar";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,14 +29,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-          <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader />}>
+          <Providers>
             <main>
               <Navbar />
               {children}
             </main>
-          </Suspense>
-        </Providers>
+          </Providers>
+        </Suspense>
       </body>
     </html>
   );

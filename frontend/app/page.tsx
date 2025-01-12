@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const NoSsrComponent = dynamic(() => import('../components/NoSsrComponent'), {
+const NoSsrComponent = dynamic(() => import('../src/components/NoSsrComponent'), {
   ssr: false,
 });
 
